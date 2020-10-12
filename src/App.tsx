@@ -1,14 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import 'antd/dist/antd.css';
 
-import UsersContainer from 'modules/user/containers/UsersContainer';
 import store from 'store/configureStore';
+
+import routes from './routes';
 
 const App = () => (
   <>
-    <Provider store={store}>
-      <UsersContainer />
-    </Provider>
+    <Provider store={store}>{routes}</Provider>
   </>
 );
 
