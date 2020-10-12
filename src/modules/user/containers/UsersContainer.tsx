@@ -1,23 +1,21 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getUsers, getLoadingUsers } from '../UserReducer';
-import UsersListView from '../components/UsersListView';
+import { getUsers, getIsLoadingUsers } from '../UserReducer';
+import UserListView from '../components/UserListView';
 import { fetchUsers } from '../UserActions';
 
 const UsersContainer = () => {
-  const loadingUsers = useSelector(getLoadingUsers);
-  const users = useSelector(getUsers);
+  const loading = useSelector(getIsLoadingUsers);
+  const data = useSelector(getUsers);
 
   const dispatch = useDispatch();
-
-  console.log({ users, loadingUsers });
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  return <UsersListView />;
+  return <UserListView data={data} loading={loading} />;
 };
 
 export default UsersContainer;
